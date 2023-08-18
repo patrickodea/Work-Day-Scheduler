@@ -22,6 +22,10 @@ $(document).ready(function () {
 
 // Add click event listeners to all the save buttons
 
+var saveButtons = document.querySelectorAll('.saveBtn');
+saveButtons.forEach(button => {
+  button.addEventListener('click', SaveButtonClick);
+});
 
 
     // TODO: Add code to apply the past, present, or future class to each time
