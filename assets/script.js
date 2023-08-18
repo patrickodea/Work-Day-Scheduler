@@ -71,10 +71,15 @@ saveButtons.forEach(button => {
     }
 
     // Call the function to set saved user input when the page loads
-    
+    setSavedUserInput();
     // TODO: Add code to display the current date in the header of the page.
-   
+    function displayCurrentDate() {
+      var currentDate = dayjs().format('dddd, MMMM D, YYYY');
+      var currentDayElement = document.getElementById('currentDay');
+      currentDayElement.textContent = currentDate;
+    }
 
     // Call the function to display the current date when the page loads
-   
+    displayCurrentDate();
+  });
   
