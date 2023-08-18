@@ -33,7 +33,27 @@ saveButtons.forEach(button => {
     // attribute of each time-block be used to conditionally add or remove the
     // past, present, and future classes? How can Day.js be used to get the
     // current hour in 24-hour time?
- 
+    function updateTimeBlockColors() {
+      var currentHour = dayjs().format('H'); // Get the current hour in 24-hour format
+
+      const timeBlocks = document.querySelectorAll('.time-block');
+      timeBlocks.forEach(block => {
+        var blockHour = parseInt(block.id.split('-')[1]); // Extract the hour from the block ID
+
+        if (blockHour < currentHour) {
+          block.classList.add('past');
+          block.classList.remove('present', 'future');
+        } else if (blockHour === currentHour) {
+          block.classList.add('present');
+          block.classList.remove('past', 'future');
+        } else {
+          block.classList.add('future');
+          block.classList.remove('past', 'present');
+        }
+      });
+    }
+    updateTimeBlockColors();
+    setInterval(updateTimeBlockColors, 60000);
 
 
     // TODO: Add code to get any user input that was saved in localStorage and set
