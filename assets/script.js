@@ -59,7 +59,16 @@ saveButtons.forEach(button => {
     // TODO: Add code to get any user input that was saved in localStorage and set
     // the values of the corresponding textarea elements. HINT: How can the id
     // attribute of each time-block be used to do this?
-
+    function setSavedUserInput() {
+      const timeBlocks = document.querySelectorAll('.time-block');
+      timeBlocks.forEach(block => {
+        var blockId = block.id;
+        var userInput = localStorage.getItem(blockId);
+        if (userInput !== null) {
+          block.querySelector('.description').value = userInput;
+        }
+      });
+    }
 
     // Call the function to set saved user input when the page loads
     
